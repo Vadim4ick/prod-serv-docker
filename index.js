@@ -6,18 +6,8 @@ const server = jsonServer.create();
 
 const router = jsonServer.router(path.resolve(__dirname, "db.json"));
 
-server.use(cors());
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
-
-server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 
 // Эндпоинт для логина
 server.post("/login", (req, res) => {
